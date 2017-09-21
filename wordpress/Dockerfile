@@ -9,7 +9,8 @@ RUN curl -s --fail https://wordpress.org/latest.zip -o /var/www/latest.zip && \
   mkdir wordpress/wp-content/mu-plugins && \
   mv sendgrid-email-delivery-simplified wordpress/wp-content/plugins && \
   rm -rf blog/wp-content && \
-  docker-php-ext-install mysqli
+  docker-php-ext-install mysqli && \
+  rm -rf /usr/bin/my*
 
 # copy things that normally should not be mutated
 COPY src/nginx.conf /etc/nginx
