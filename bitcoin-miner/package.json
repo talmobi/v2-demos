@@ -1,0 +1,54 @@
+{
+  "dependencies": {
+    "debug": "^3.0.1",
+    "execa": "^0.8.0",
+    "ioredis": "^3.1.4",
+    "micro": "^9.0.0",
+    "stream-snitch": "^0.0.3",
+    "then-sleep": "^1.0.1",
+    "uuid": "^3.1.0",
+    "zarg": "^0.2.0"
+  },
+  "license": "MIT",
+  "main": "./src/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:staged": "lint-staged",
+    "test": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^4.7.1",
+    "lint-staged": "^4.2.1",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.7.0"
+  },
+  "pre-commit": "lint:staged",
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "prettier --write --single-quote --no-semi",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "script"
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "rules": {
+      "func-names": [
+        "error",
+        "as-needed"
+      ],
+      "no-shadow": "error",
+      "no-extra-semi": 0
+    }
+  }
+}

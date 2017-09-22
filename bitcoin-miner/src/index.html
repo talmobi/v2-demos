@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        background: #000;
+        color: #fff;
+        margin: 0;
+        font-family: 'San Francisco', Helvetica, Arial, san-serif;
+      }
+
+      main {
+        height: 100vh;
+        width: 100vw;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+      }
+
+      header span {
+        color: #9B9B9B;
+        font-weight: bold;
+        width: 100px;
+        text-align: center;
+      }
+
+      article {
+        display: flex;
+        width: 550px;
+        padding: 80px 0;
+        font-size: 18px;
+      }
+
+      article span {
+        flex: 1;
+        font-weight: 100;
+      }
+
+      article span:last-child {
+        text-align: right;
+      }
+
+      @media screen and (max-width: 500px) {
+        article {
+          flex-direction: column;
+        }
+
+        article span, article span:last-child {
+          padding: 10px 0;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <svg width="77" height="67" viewBox="0 0 77 67" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="196.6%" y1="228.8%" x2="50%" y2="50%" id="a"><stop offset="0%"/><stop stop-color="#FFF" offset="100%"/></linearGradient></defs><path d="M309.5 236l38.5 67h-77" transform="translate(-271 -236)" fill="url(#a)" fill-rule="evenodd"/></svg>
+
+        <span>
+          +
+        </span>
+
+        <svg width="76" height="76" viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="107.2%" y1="144.6%" x2="50%" y2="50%" id="a"><stop offset="0%"/><stop stop-color="#FFF" offset="100%"/></linearGradient></defs><g fill-rule="nonzero" fill="none"><path d="M28.8 75C8.5 69.7-4 49 1 28.7 6.3 8.5 27-4 47.3 1 67.5 6.3 80 27 75 47.3 69.7 67.5 49 80 28.7 75z" fill="url(#a)"/><path d="M56 33.3c.7-5-3.2-7.8-8.4-9.6l1.7-6.8-4-1-1.8 6.5-3.3-.8L42 15l-4.2-1-1.7 6.8-2.6-.6-5.6-1.4-1 4.4 3 .7c1.5.4 1.8 1.5 1.8 2.4l-2 7.7.5.3h-.4L27 45c-.3.6-.8 1.4-2 1l-3-.7-2 4.8 5.4 1.4 3 .8-1.8 7 4 1 1.8-7 3.3 1L34 61l4.2 1 1.7-7c7 1.4 12.2 1 14.4-5.5 1.8-5.2 0-8.2-3.8-10 2.7-.7 4.8-2.5 5.3-6.2zm-9.5 13.3c-1.3 5.2-10 2.4-12.7 1.7L36 39c2.8.8 11.8 2.2 10.5 7.6zm1.2-13.4c-1 4.7-8.3 2.3-10.6 1.7l2-8.4c2.5.6 10 1.7 8.7 6.6z" fill="#000"/></g></svg>
+      </header>
+
+      <article>
+        <span id="hashrate">
+          HASH RATE: <b>{{HASH_RATE}} khash/s</b>
+        </span>
+
+        <span id="nodesCount">
+          NODES: <b>{{NODES_COUNT}}</b>
+        </span>
+      </article>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+    <script>
+      function load() {
+        fetch('/data')
+          .then(res => res.json())
+          .then(({hashRate, nodesCount}) => {
+            document.querySelector('#hashrate b').innerText = hashRate + ' khash/s'
+            document.querySelector('#nodesCount b').innerText = nodesCount
+            setTimeout(load, 1000);
+          })
+          .catch(err => {
+            console.error(err)
+            setTimeout(load, 1000);
+          });
+      }
+
+      load();
+    </script>
+  </body>
+</html>
