@@ -18,7 +18,7 @@ COPY src/run.sh .
 COPY src/email-settings.php src/wp-config.php /var/www/wordpress/
 
 # copy user config
-COPY wp-content /var/www/wordpress
+COPY wp-content /var/www/wordpress/wp-content
 
 EXPOSE 3000
 CMD ["./run.sh"]
