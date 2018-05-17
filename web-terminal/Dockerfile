@@ -1,1 +1,1 @@
-FROM timhaak/gotty-alpine
+FROM dit4c/gotty
