@@ -18,14 +18,13 @@ define('LOGGED_IN_SALT', getenv('SECRET_LOGGED_IN_SALT'));
 define('NONCE_SALT', getenv('SECRET_NONCE_SALT'));
 
 $protocol = 'http';
-$_SERVER['HTTPS']='off';
-if (getenv('NOW_URL')) {
-    $_SERVER['HTTPS'] = 'on';
-      $protocol = 'https';
+if( isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' ) {
+  $_SERVER['HTTPS']='on';
+  $protocol = 'https';
 }
 
 define('WP_SITEURL', $protocol . '://' . $_SERVER['HTTP_HOST']);
-define('WP_HOME', $protocol . $_SERVER['HTTP_HOST']);
+define('WP_HOME', $protocol . '://' . $_SERVER['HTTP_HOST']);
 
 if ( !defined('ABSPATH') )
     define('ABSPATH', dirname(__FILE__) . '/');
