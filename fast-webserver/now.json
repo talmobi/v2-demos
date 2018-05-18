@@ -1,0 +1,5 @@
+{
+  "limits": {
+    "maxConcurrentReqs": 1000
+  }
+}
