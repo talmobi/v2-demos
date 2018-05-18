@@ -1,0 +1,16 @@
+{
+  "name": "now-examples-dump",
+  "version": "1.0.0",
+  "description": "Dump information about the HTTP request as a JSON response",
+  "scripts": {
+    "start": "micro server.js"
+  },
+  "author": "Nathan Rajlich <nate@zeit.co>",
+  "license": "MIT",
+  "engines": {
+    "node": "10"
+  },
+  "dependencies": {
+    "micro": "^9.1.0"
+  }
+}
