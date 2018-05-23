@@ -12,4 +12,4 @@ SHELL ["/bin/bash", "-c"]
 STOPSIGNAL SIGKILL
 HEALTHCHECK --interval=5m --timeout=3s \
   CMD curl -f http://localhost:3000/ || exit 1
-CMD node ./node_modules/.bin/micro server.js
+CMD ["node", "./node_modules/.bin/micro", "server.js"]
