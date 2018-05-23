@@ -1,0 +1,11 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "misc-bitcoin-miner/package.json",
+        "misc-dump/package.json",
+        "node-http-microservice/package.json"
+      ]
+    }
+  }
+}
