@@ -9,9 +9,7 @@ RUN curl -s --fail https://wordpress.org/latest.zip -o /var/www/latest.zip && \
   unzip -q latest.zip && \
   unzip -q sendgrid.zip && \
   rm -rf *.zip && \
-  mkdir wordpress/wp-content/mu-plugins && \
   mv sendgrid-email-delivery-simplified wordpress/wp-content/plugins && \
-  rm -rf blog/wp-content && \
   docker-php-ext-install mysqli && \
   rm -rf /usr/bin/my* /usr/bin/maria* /usr/bin/aria* /usr/src/*
 
