@@ -3,12 +3,10 @@
 dir=${1:2}
 token=$2
 
-url=$(now $dir -f --token $token --public)
+url=$(now $dir --token $token --team zeit --public)
 
 if [ ! -z $url ]; then
   echo "<li><a href='$url'>$dir</a></li>" >> index.html
 else
   echo "<li>Failed to deploy $dir</li>" >> index.html
 fi
-
-sleep 1
