@@ -4,8 +4,9 @@ dir=${1:2}
 token=$2
 
 url=$(now $dir --token $token --team zeit --public)
+r=$?
 
-if [ ! -z $url ]; then
+if [ $r -eq 0 ] && [ ! -z $url ]; then
   echo "<li><a href='$url'>$dir</a></li>" >> index.html
 else
   echo "<li>Failed to deploy $dir</li>" >> index.html
