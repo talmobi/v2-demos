@@ -1,0 +1,11 @@
+{
+  "type": "docker",
+  "features": {
+    "cloud": "v2"
+  },
+  "build": {
+    "env": {
+      "_NOW_TOKEN": "@now-token"
+    }
+  }
+}
